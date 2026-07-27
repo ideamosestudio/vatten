@@ -46,7 +46,16 @@ document.querySelector('#app').innerHTML = `
 
   <main>
     <section class="hero" id="inicio">
-      <video class="hero__video" autoplay muted loop playsinline preload="auto" aria-hidden="true">
+      <video
+        class="hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="auto"
+        poster="/images/vatten-hero-poster.jpg"
+        aria-hidden="true">
+        <source src="/media/vatten-hero.webm" type="video/webm">
         <source src="/media/vatten-hero.mp4" type="video/mp4">
       </video>
       <div class="hero__overlay"></div>

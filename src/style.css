@@ -157,7 +157,10 @@ figure {
   display: flex;
   align-items: center;
   color: #fff;
-  background: #00336f;
+  background:
+    linear-gradient(90deg, rgba(0, 28, 67, 0.2), rgba(0, 80, 150, 0.08)),
+    url('/images/vatten-hero-poster.jpg') center / cover no-repeat,
+    #00336f;
 }
 
 .hero__video,
