@@ -64,7 +64,7 @@ const serviceCard = (service, index) => `
 const detailIcon = (label) => {
   if (label === 'TELÉFONO') return '☎'
   if (label === 'EMAIL') return '✉'
-  return '⌖'
+  return '📍'
 }
 
 document.querySelector('#app').innerHTML = `
@@ -135,22 +135,30 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="about section-shell" id="nosotros">
-      <header class="section-heading">
-        <p class="eyebrow" data-reveal>${content.about.label}</p>
-        <h2
-          class="section-heading__split"
-          aria-label="${content.about.title}"
-          data-reveal>
-          <span>Somos una empresa enfocada</span>
-          <em>en el tratamiento de aguas industriales</em>
-        </h2>
-      </header>
+      <div class="about-editorial">
+        <aside class="about-editorial__rail" data-reveal>
+          <p class="eyebrow">${content.about.label}</p>
+          <span class="about-editorial__marker" aria-hidden="true"></span>
+        </aside>
 
-      <div class="about__content">
-        <p class="about__featured" data-reveal>${content.about.featured}</p>
-        <div class="about__body">
-          ${content.about.paragraphs.map((paragraph) => `<p data-reveal>${paragraph}</p>`).join('')}
-          <div data-reveal>${ctaGroup()}</div>
+        <div class="about-editorial__main">
+          <h2
+            class="section-heading__split about-editorial__title"
+            aria-label="${content.about.title}"
+            data-reveal>
+            <span>Somos una empresa enfocada</span>
+            <em>en el tratamiento de aguas industriales</em>
+          </h2>
+
+          <div class="about-editorial__rule" aria-hidden="true"></div>
+
+          <div class="about-editorial__copy">
+            <p class="about__featured" data-reveal>${content.about.featured}</p>
+            <div class="about__body">
+              ${content.about.paragraphs.map((paragraph) => `<p data-reveal>${paragraph}</p>`).join('')}
+              <div data-reveal>${ctaGroup()}</div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -159,10 +167,6 @@ document.querySelector('#app').innerHTML = `
           <strong>${content.bento.experienceNumber}</strong>
           <p>${content.bento.experienceLabel}</p>
           <span class="bento-card__rings" aria-hidden="true"></span>
-        </article>
-
-        <article class="bento-card bento-card--statement bento-glow" data-reveal>
-          <p>${content.about.featured}</p>
         </article>
 
         ${content.bento.concepts.map((concept, index) => `
@@ -176,8 +180,6 @@ document.querySelector('#app').innerHTML = `
         `).join('')}
 
       </div>
-
-      <div data-reveal>${ctaGroup('section-actions')}</div>
     </section>
 
     <section class="services-intro water-bg" id="servicios">
@@ -211,7 +213,6 @@ document.querySelector('#app').innerHTML = `
       <div class="services-grid">
         ${content.services.map(serviceCard).join('')}
       </div>
-      <div data-reveal>${ctaGroup('section-actions')}</div>
     </section>
 
     <section class="contact section-shell" id="contacto">
@@ -219,7 +220,6 @@ document.querySelector('#app').innerHTML = `
         <p class="eyebrow" data-reveal>CONTACTO</p>
         <h2 data-split data-reveal>${content.contact.title}</h2>
         <p data-reveal>${content.contact.description}</p>
-        <div data-reveal>${ctaGroup('section-actions--contact')}</div>
       </div>
 
       <div class="contact__grid">
