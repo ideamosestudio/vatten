@@ -1,5 +1,7 @@
 import './style.css'
 
+const assetBase = import.meta.env.BASE_URL
+
 const serviceTags = [
   'Calderas',
   'Circuitos cerrados',
@@ -16,7 +18,7 @@ const serviceTags = [
 document.querySelector('#app').innerHTML = `
   <header class="topbar" data-header>
     <a class="logo" href="#inicio" aria-label="VATTEN Aguas y Servicios, inicio">
-      <img src="/images/vatten-logo.png" alt="VATTEN Aguas y Servicios">
+      <img src="${assetBase}images/vatten-logo.png" alt="VATTEN Aguas y Servicios">
     </a>
     <nav class="desktop-nav" aria-label="Navegación principal">
       <a href="#empresa">La empresa</a>
@@ -45,7 +47,7 @@ document.querySelector('#app').innerHTML = `
   </div>
 
   <main>
-    <section class="hero" id="inicio">
+    <section class="hero" id="inicio" style="--hero-poster: url('${assetBase}images/vatten-hero-poster.jpg')">
       <video
         class="hero__video"
         autoplay
@@ -53,10 +55,10 @@ document.querySelector('#app').innerHTML = `
         loop
         playsinline
         preload="auto"
-        poster="/images/vatten-hero-poster.jpg"
+        poster="${assetBase}images/vatten-hero-poster.jpg"
         aria-hidden="true">
-        <source src="/media/vatten-hero.webm" type="video/webm">
-        <source src="/media/vatten-hero.mp4" type="video/mp4">
+        <source src="${assetBase}media/vatten-hero.webm" type="video/webm">
+        <source src="${assetBase}media/vatten-hero.mp4" type="video/mp4">
       </video>
       <div class="hero__overlay"></div>
       <div class="hero__glow hero__glow--one"></div>
@@ -135,7 +137,7 @@ document.querySelector('#app').innerHTML = `
             <a href="#contacto" class="card-link">Consultar <span>↗</span></a>
           </div>
           <div class="service-card__media image-reveal">
-            <img src="/images/fabrica-4.jpg" alt="Instalaciones de VATTEN para tratamiento de agua">
+            <img src="${assetBase}images/fabrica-4.jpg" alt="Instalaciones de VATTEN para tratamiento de agua">
           </div>
         </article>
 
@@ -146,7 +148,7 @@ document.querySelector('#app').innerHTML = `
             <p>Soluciones personalizadas para optimizar la transferencia de calor y controlar corrosión, incrustaciones y contaminación biológica.</p>
           </div>
           <div class="service-card__media service-card__media--blue image-reveal">
-            <img src="/images/refrigeracion.png" alt="Sistema industrial de refrigeración">
+            <img src="${assetBase}images/refrigeracion.png" alt="Sistema industrial de refrigeración">
           </div>
         </article>
 
@@ -157,7 +159,7 @@ document.querySelector('#app').innerHTML = `
             <p>Programas específicos para membranas de ósmosis, ultra y nanofiltración que previenen ensuciamiento e incrustaciones.</p>
           </div>
           <div class="service-card__media image-reveal">
-            <img src="/images/osmosis-inversa.jpg" alt="Sistema de ósmosis inversa">
+            <img src="${assetBase}images/osmosis-inversa.jpg" alt="Sistema de ósmosis inversa">
           </div>
         </article>
 
@@ -173,7 +175,7 @@ document.querySelector('#app').innerHTML = `
             </ul>
           </div>
           <div class="service-card__media image-reveal">
-            <img src="/images/efluentes-industriales.jpg" alt="Tratamiento de efluentes industriales">
+            <img src="${assetBase}images/efluentes-industriales.jpg" alt="Tratamiento de efluentes industriales">
           </div>
         </article>
       </div>
@@ -193,7 +195,7 @@ document.querySelector('#app').innerHTML = `
         </p>
       </div>
       <figure class="plant__visual reveal image-reveal">
-        <img src="/images/fabrica2.jpg" alt="Nuevas oficinas y planta de VATTEN en el Parque Industrial Moreno">
+        <img src="${assetBase}images/fabrica2.jpg" alt="Nuevas oficinas y planta de VATTEN en el Parque Industrial Moreno">
         <figcaption class="glass-card">
           <span>Planta Moreno</span>
           <b>Fabricación · Laboratorio · Operaciones</b>
@@ -261,7 +263,7 @@ document.querySelector('#app').innerHTML = `
   <footer class="footer">
     <div class="footer__top">
       <div class="footer__brand">
-        <img src="/images/vatten-logo.png" alt="VATTEN Aguas y Servicios">
+        <img src="${assetBase}images/vatten-logo.png" alt="VATTEN Aguas y Servicios">
         <p>Soluciones integrales para el tratamiento de aguas industriales.</p>
       </div>
       <div class="footer__col">

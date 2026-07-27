@@ -159,7 +159,7 @@ figure {
   color: #fff;
   background:
     linear-gradient(90deg, rgba(0, 28, 67, 0.2), rgba(0, 80, 150, 0.08)),
-    url('/images/vatten-hero-poster.jpg') center / cover no-repeat,
+    var(--hero-poster) center / cover no-repeat,
     #00336f;
 }
 
