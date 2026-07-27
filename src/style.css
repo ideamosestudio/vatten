@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Roboto:wght@300;400;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@1&family=Oswald:wght@700&family=Roboto:wght@300;400;500;700;900&display=swap');
 
 :root {
   font-family: 'Roboto', sans-serif;
@@ -3902,5 +3902,139 @@ figure {
   .certificate-card__image {
     aspect-ratio: 4 / 4.4;
     padding: 28px;
+  }
+}
+
+/* Hero scale, enhanced experience panel and compact certification marks */
+.hero__title-primary {
+  font-size: clamp(5.4rem, 6.7vw, 7rem);
+  line-height: 0.78;
+}
+
+.hero__title-secondary {
+  margin-top: 22px;
+  font-size: clamp(2.85rem, 3.55vw, 3.8rem);
+}
+
+.about .bento .bento-card--experience {
+  isolation: isolate;
+  gap: 14px;
+  overflow: hidden;
+  padding: clamp(32px, 3.2vw, 50px);
+  background:
+    radial-gradient(circle at 78% 18%, rgba(112, 211, 255, 0.36), transparent 28%),
+    linear-gradient(145deg, rgba(5, 36, 111, 0.36), rgba(7, 116, 225, 0.08));
+}
+
+.about .bento .bento-card--experience::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: 20px;
+  opacity: 0.52;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0.15)) 0 100% / 100% 1px no-repeat,
+    radial-gradient(circle, rgba(255, 255, 255, 0.34) 1px, transparent 1.5px) 100% 0 / 16px 16px;
+  mask-image: linear-gradient(135deg, transparent 5%, #000 42%, #000 100%);
+}
+
+.about .bento .bento-card--experience::after {
+  content: "";
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  width: 58px;
+  height: 58px;
+  border-top: 1px solid rgba(255, 255, 255, 0.55);
+  border-right: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 0 14px 0 0;
+}
+
+.about .bento .bento-card--experience strong {
+  position: relative;
+  z-index: 2;
+  font-family: "Oswald", "Roboto Condensed", sans-serif;
+  font-size: clamp(9rem, 12.2vw, 13rem);
+  font-weight: 700;
+  line-height: 0.74;
+  letter-spacing: -0.075em;
+  text-shadow: 0 14px 34px rgba(0, 31, 91, 0.2);
+}
+
+.about .bento .bento-card--experience p {
+  position: relative;
+  z-index: 2;
+  max-width: 170px;
+  margin: 10px 0 0 4px;
+  font-size: 0.82rem;
+  font-weight: 400;
+  line-height: 1.35;
+  letter-spacing: 0.01em;
+}
+
+.about .bento .bento-card__rings {
+  right: -14%;
+  bottom: -44%;
+  width: 95%;
+  opacity: 0.55;
+}
+
+.certificate-card__image {
+  position: relative;
+}
+
+.certificate-card__image::before,
+.certificate-card__image::after {
+  content: "";
+  position: absolute;
+  pointer-events: none;
+}
+
+.certificate-card__image::before {
+  inset: 22px;
+  border: 1px solid rgba(0, 98, 210, 0.08);
+  border-radius: 16px;
+}
+
+.certificate-card__image::after {
+  top: 30px;
+  right: 30px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--blue-500);
+  box-shadow: 0 0 18px rgba(21, 153, 255, 0.55);
+}
+
+.certificate-card__image img {
+  width: 30%;
+  height: auto;
+  max-height: 34%;
+  object-fit: contain;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    min-height: 780px;
+    place-items: start center;
+    padding: 132px 18px 64px;
+  }
+
+  .hero__title-primary {
+    font-size: clamp(4.25rem, 19vw, 5.3rem);
+  }
+
+  .hero__title-secondary {
+    margin-top: 18px;
+    font-size: clamp(2.2rem, 10vw, 2.8rem);
+  }
+
+  .about .bento .bento-card--experience strong {
+    font-size: clamp(7.4rem, 38vw, 9.2rem);
+  }
+
+  .certificate-card__image img {
+    width: 30%;
+    max-height: 32%;
   }
 }
