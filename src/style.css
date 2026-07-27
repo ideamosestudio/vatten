@@ -4038,3 +4038,66 @@ figure {
     max-height: 32%;
   }
 }
+
+/* Hero: dos líneas editoriales exactas en escritorio. */
+@media (min-width: 901px) {
+  .hero__content {
+    width: min(calc(100% - 48px), 1320px);
+  }
+
+  .hero h1 {
+    width: 100%;
+    max-width: none;
+  }
+
+  .hero__title-primary {
+    font-size: clamp(5.8rem, 6.4vw, 7rem);
+  }
+
+  .hero__title-secondary {
+    width: max-content;
+    max-width: none;
+    margin-top: 24px;
+    margin-inline: auto;
+    font-size: clamp(2.45rem, 2.9vw, 3.25rem);
+    line-height: 1;
+    white-space: nowrap;
+  }
+}
+
+/* Certificados: soporte blanco limpio para las imágenes originales. */
+.certifications__grid {
+  gap: clamp(24px, 2.25vw, 38px);
+}
+
+.certificate-card {
+  background: var(--white);
+}
+
+.certificate-card__image {
+  background: var(--white);
+}
+
+.certificate-card__image::before,
+.certificate-card__image::after {
+  content: none;
+}
+
+.certificate-card__image img {
+  width: 64%;
+  height: auto;
+  max-height: 76%;
+}
+
+@media (max-width: 980px) {
+  .certifications__grid {
+    gap: 28px;
+  }
+}
+
+@media (max-width: 700px) {
+  .certificate-card__image img {
+    width: 62%;
+    max-height: 76%;
+  }
+}
