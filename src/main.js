@@ -75,6 +75,17 @@ document.querySelector('#app').innerHTML = `
 
   <main>
     <section class="hero water-bg" id="inicio">
+      <video
+        class="hero__video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-hidden="true">
+        <source src="${asset('video/vatten-hero.mp4')}" type="video/mp4">
+      </video>
+      <div class="hero__video-overlay" aria-hidden="true"></div>
       <div class="water-bg__layer water-bg__layer--one" aria-hidden="true"></div>
       <div class="water-bg__layer water-bg__layer--two" aria-hidden="true"></div>
       <div class="water-bg__wave" aria-hidden="true"></div>

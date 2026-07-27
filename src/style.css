@@ -328,9 +328,42 @@ figure {
   padding: 145px 36px 95px;
 }
 
+.hero__video,
+.hero__video-overlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__video {
+  z-index: 0;
+  object-fit: cover;
+  object-position: center;
+}
+
+.hero__video-overlay {
+  z-index: 1;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0, 16, 62, 0.58) 0%, rgba(0, 59, 150, 0.3) 48%, rgba(0, 31, 97, 0.66) 100%),
+    radial-gradient(circle at 78% 34%, rgba(48, 181, 255, 0.2), transparent 42%);
+}
+
+.hero .water-bg__layer,
+.hero .water-bg__wave {
+  z-index: 1;
+  mix-blend-mode: soft-light;
+}
+
+.hero .noise,
+.hero__waterline {
+  z-index: 2;
+}
+
 .hero__content {
   position: relative;
-  z-index: 2;
+  z-index: 3;
   width: min(100%, 1190px);
   display: flex;
   flex-direction: column;
@@ -1679,6 +1712,10 @@ figure {
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .hero__video {
+    display: none;
   }
 
   *,
