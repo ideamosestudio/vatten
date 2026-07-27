@@ -18,6 +18,20 @@ const cta = (className = 'cta-button') => `
   </a>
 `
 
+const ctaGroup = (
+  className = '',
+  secondaryLabel = content.servicesIntro.label,
+  secondaryHref = '#servicios'
+) => `
+  <div class="cta-group ${className}">
+    ${cta()}
+    <a class="cta-button cta-button--secondary" href="${secondaryHref}">
+      <span>${secondaryLabel}</span>
+      <b aria-hidden="true">↓</b>
+    </a>
+  </div>
+`
+
 const serviceCard = (service, index) => `
   <article
     class="service-card service-card--${service.size} service-card--${service.slug}"
@@ -36,7 +50,13 @@ const serviceCard = (service, index) => `
       <h3>${service.title}</h3>
       <p class="service-card__summary">${service.summary}</p>
       <p class="service-card__text">${service.text}</p>
-      ${cta('cta-button cta-button--small')}
+      <div class="cta-group cta-group--card">
+        ${cta('cta-button cta-button--small')}
+        <a class="cta-button cta-button--small cta-button--secondary" href="#contacto">
+          <span>CONTACTO</span>
+          <b aria-hidden="true">↓</b>
+        </a>
+      </div>
     </div>
   </article>
 `
@@ -76,16 +96,16 @@ document.querySelector('#app').innerHTML = `
   <main>
     <section class="hero water-bg" id="inicio">
       <video
-        class="hero__video"
+        class="section-video"
         autoplay
         muted
         loop
         playsinline
         preload="metadata"
         aria-hidden="true">
-        <source src="${asset('video/vatten-hero.mp4')}" type="video/mp4">
+        <source src="${assetBase}video/vatten-hero.mp4" type="video/mp4">
       </video>
-      <div class="hero__video-overlay" aria-hidden="true"></div>
+      <div class="section-video__overlay" aria-hidden="true"></div>
       <div class="water-bg__layer water-bg__layer--one" aria-hidden="true"></div>
       <div class="water-bg__layer water-bg__layer--two" aria-hidden="true"></div>
       <div class="water-bg__wave" aria-hidden="true"></div>
@@ -100,7 +120,7 @@ document.querySelector('#app').innerHTML = `
           <em class="hero__title-secondary">${content.hero.titleSecondary}</em>
         </h1>
         <p class="hero__description" data-reveal>${content.hero.description}</p>
-        <div data-reveal>${cta()}</div>
+        <div data-reveal>${ctaGroup('cta-group--hero')}</div>
       </div>
 
       <div class="hero__waterline" aria-hidden="true">
@@ -118,7 +138,7 @@ document.querySelector('#app').innerHTML = `
         <p class="about__featured" data-reveal>${content.about.featured}</p>
         <div class="about__body">
           ${content.about.paragraphs.map((paragraph) => `<p data-reveal>${paragraph}</p>`).join('')}
-          <div data-reveal>${cta('cta-button cta-button--dark')}</div>
+          <div data-reveal>${ctaGroup()}</div>
         </div>
       </div>
 
@@ -143,17 +163,23 @@ document.querySelector('#app').innerHTML = `
           </article>
         `).join('')}
 
-        <figure class="bento-card bento-card--photo image-mask" data-reveal>
-          <img
-            src="${assetBase}images/vatten/torres-enfriamiento.png"
-            alt="Torres industriales de enfriamiento de agua"
-            loading="lazy"
-            data-parallax>
-        </figure>
       </div>
+
+      <div data-reveal>${ctaGroup('section-actions')}</div>
     </section>
 
     <section class="services-intro water-bg" id="servicios">
+      <video
+        class="section-video"
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        aria-hidden="true">
+        <source src="${assetBase}video/vatten-hero.mp4" type="video/mp4">
+      </video>
+      <div class="section-video__overlay" aria-hidden="true"></div>
       <div class="water-bg__layer water-bg__layer--one" aria-hidden="true"></div>
       <div class="water-bg__layer water-bg__layer--two" aria-hidden="true"></div>
       <div class="water-bg__wave" aria-hidden="true"></div>
@@ -165,6 +191,7 @@ document.querySelector('#app').innerHTML = `
           <em>para ${content.servicesIntro.title.split(' para ')[1]}</em>
         </h2>
         <p data-reveal>${content.servicesIntro.description}</p>
+        <div data-reveal>${ctaGroup('cta-group--light', 'CONTACTO', '#contacto')}</div>
       </div>
     </section>
 
@@ -172,6 +199,7 @@ document.querySelector('#app').innerHTML = `
       <div class="services-grid">
         ${content.services.map(serviceCard).join('')}
       </div>
+      <div data-reveal>${ctaGroup('section-actions')}</div>
     </section>
 
     <section class="contact section-shell" id="contacto">
@@ -215,6 +243,17 @@ document.querySelector('#app').innerHTML = `
             </div>
           `).join('')}
         </address>
+      </div>
+
+      <div data-reveal>${ctaGroup('section-actions section-actions--contact')}</div>
+
+      <div class="map-wrap" data-reveal>
+        <iframe
+          title="Ubicación de VATTEN en Parque Industrial Moreno"
+          src="https://www.google.com/maps?q=Parque%20Industrial%20Moreno%20Cuartel%20V%20PIM%20II%20RP24%207900%20B1740ADB%20Buenos%20Aires%20Argentina&output=embed"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          allowfullscreen></iframe>
       </div>
     </section>
   </main>
@@ -304,6 +343,24 @@ document.querySelectorAll('[data-reveal]').forEach((element) => {
 })
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+const sectionVideos = [...document.querySelectorAll('.section-video')]
+
+if (!reducedMotion.matches) {
+  const videoObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      const video = entry.target
+
+      if (entry.isIntersecting) {
+        video.play().catch(() => {})
+      } else {
+        video.pause()
+      }
+    })
+  }, { threshold: 0.12 })
+
+  sectionVideos.forEach((video) => videoObserver.observe(video))
+}
+
 const parallaxImages = [...document.querySelectorAll('[data-parallax]')]
 let parallaxFrame = null
 
