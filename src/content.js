@@ -98,7 +98,7 @@ export const content = {
     title: 'Contactanos',
     description:
       'Complete el formulario con sus datos de contacto y en breve nos estaremos comunicando con usted.',
-    fields: ['Nombre', 'Email', 'Teléfono', 'Mensaje'],
+    fields: ['Nombre', 'Email', 'Teléfono', 'Empresa', 'Mensaje'],
     submit: 'ENVIAR',
     details: [
       {

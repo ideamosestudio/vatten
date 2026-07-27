@@ -61,6 +61,12 @@ const serviceCard = (service, index) => `
   </article>
 `
 
+const detailIcon = (label) => {
+  if (label === 'TELÉFONO') return '☎'
+  if (label === 'EMAIL') return '✉'
+  return '⌖'
+}
+
 document.querySelector('#app').innerHTML = `
   <header class="site-header" data-header>
     <a class="site-logo" href="#inicio" aria-label="${content.brand}, Inicio">
@@ -103,7 +109,7 @@ document.querySelector('#app').innerHTML = `
         playsinline
         preload="metadata"
         aria-hidden="true">
-        <source src="${assetBase}video/vatten-hero.mp4" type="video/mp4">
+        <source src="${assetBase}video/vatten-hero-agua-final.mp4" type="video/mp4">
       </video>
       <div class="section-video__overlay" aria-hidden="true"></div>
       <div class="water-bg__layer water-bg__layer--one" aria-hidden="true"></div>
@@ -131,7 +137,13 @@ document.querySelector('#app').innerHTML = `
     <section class="about section-shell" id="nosotros">
       <header class="section-heading">
         <p class="eyebrow" data-reveal>${content.about.label}</p>
-        <h2 data-split data-reveal>${content.about.title}</h2>
+        <h2
+          class="section-heading__split"
+          aria-label="${content.about.title}"
+          data-reveal>
+          <span>Somos una empresa enfocada</span>
+          <em>en el tratamiento de aguas industriales</em>
+        </h2>
       </header>
 
       <div class="about__content">
@@ -207,24 +219,25 @@ document.querySelector('#app').innerHTML = `
         <p class="eyebrow" data-reveal>CONTACTO</p>
         <h2 data-split data-reveal>${content.contact.title}</h2>
         <p data-reveal>${content.contact.description}</p>
+        <div data-reveal>${ctaGroup('section-actions--contact')}</div>
       </div>
 
       <div class="contact__grid">
         <form class="contact-form" data-contact-form data-reveal>
           <div class="form-grid">
-            ${content.contact.fields.slice(0, 3).map((field) => `
+            ${content.contact.fields.slice(0, 4).map((field) => `
               <label>
                 <span>${field}</span>
                 <input
                   type="${field === 'Email' ? 'email' : field === 'Teléfono' ? 'tel' : 'text'}"
                   name="${field}"
-                  autocomplete="${field === 'Nombre' ? 'name' : field === 'Email' ? 'email' : 'tel'}"
+                  autocomplete="${field === 'Nombre' ? 'name' : field === 'Email' ? 'email' : field === 'Teléfono' ? 'tel' : 'organization'}"
                   required>
               </label>
             `).join('')}
             <label class="form-message">
-              <span>${content.contact.fields[3]}</span>
-              <textarea name="${content.contact.fields[3]}" rows="5" required></textarea>
+              <span>${content.contact.fields[4]}</span>
+              <textarea name="${content.contact.fields[4]}" rows="4" required></textarea>
             </label>
           </div>
           <button class="submit-button" type="submit">
@@ -235,17 +248,18 @@ document.querySelector('#app').innerHTML = `
 
         <address class="contact-details" data-reveal>
           ${content.contact.details.map((detail) => `
-            <div>
-              <span>${detail.label}</span>
-              ${detail.href
-                ? `<a href="${detail.href}">${detail.value}</a>`
-                : `<p>${detail.value}</p>`}
+            <div class="contact-detail">
+              <i aria-hidden="true">${detailIcon(detail.label)}</i>
+              <div>
+                <span>${detail.label}</span>
+                ${detail.href
+                  ? `<a href="${detail.href}">${detail.value}</a>`
+                  : `<p>${detail.value}</p>`}
+              </div>
             </div>
           `).join('')}
         </address>
       </div>
-
-      <div data-reveal>${ctaGroup('section-actions section-actions--contact')}</div>
 
       <div class="map-wrap" data-reveal>
         <iframe
@@ -285,7 +299,6 @@ document.querySelector('#app').innerHTML = `
       <a href="#inicio">Inicio ↑</a>
     </div>
 
-    <p class="site-footer__wordmark" aria-hidden="true">VATTEN</p>
   </footer>
 `
 
