@@ -61,11 +61,30 @@ const serviceCard = (service, index) => `
   </article>
 `
 
-const detailIcon = (label) => {
-  if (label === 'TELÉFONO') return '☎'
-  if (label === 'EMAIL') return '✉'
-  return '📍'
+const lineIcon = (name) => {
+  const paths = {
+    location: '<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
+    phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/>',
+    email: '<rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/>',
+    factory: '<path d="M3 21V9l6 3V9l6 3V5h5l1 16Z"/><path d="M7 17h2m4 0h2m4 0h2"/>',
+    lab: '<path d="M9 3h6m-5 0v6l-5 9a2 2 0 0 0 1.7 3h10.6a2 2 0 0 0 1.7-3l-5-9V3"/><path d="M7.5 16h9"/>',
+    support: '<path d="M4 14v-2a8 8 0 0 1 16 0v2"/><path d="M18 19c0 1.1-.9 2-2 2h-3"/><rect x="3" y="13" width="4" height="6" rx="2"/><rect x="17" y="13" width="4" height="6" rx="2"/>'
+  }
+
+  return `
+    <svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+      ${paths[name]}
+    </svg>
+  `
 }
+
+const detailIcon = (label) => {
+  if (label === 'TELÉFONO') return lineIcon('phone')
+  if (label === 'EMAIL') return lineIcon('email')
+  return lineIcon('location')
+}
+
+const conceptIcons = ['factory', 'lab', 'support']
 
 document.querySelector('#app').innerHTML = `
   <header class="site-header" data-header>
@@ -174,7 +193,7 @@ document.querySelector('#app').innerHTML = `
             class="bento-card bento-card--concept bento-card--concept-${index + 1} bento-glow"
             data-reveal
             style="--delay: ${(index + 1) * 80}ms">
-            <span aria-hidden="true"></span>
+            <span class="bento-card__icon" aria-hidden="true">${lineIcon(conceptIcons[index])}</span>
             <h3>${concept}</h3>
           </article>
         `).join('')}
@@ -212,6 +231,33 @@ document.querySelector('#app').innerHTML = `
     <section class="services section-shell" aria-label="Servicios de VATTEN">
       <div class="services-grid">
         ${content.services.map(serviceCard).join('')}
+      </div>
+    </section>
+
+    <section class="certifications section-shell" aria-labelledby="certifications-title">
+      <div class="certifications__heading" data-reveal>
+        <p class="eyebrow">${content.certifications.title.toUpperCase()}</p>
+        <h2 id="certifications-title">${content.certifications.title}</h2>
+      </div>
+
+      <div class="certifications__grid">
+        ${content.certifications.items.map((certificate, index) => `
+          <article class="certificate-card" data-reveal style="--delay: ${index * 80}ms">
+            <div class="certificate-card__image">
+              <img
+                src="${assetBase}${certificate.image}"
+                alt="${certificate.alt}"
+                loading="lazy">
+            </div>
+            <a
+              class="certificate-card__download"
+              href="${assetBase}${certificate.pdf}"
+              download>
+              <span>${content.certifications.downloadLabel}</span>
+              <b aria-hidden="true">↓</b>
+            </a>
+          </article>
+        `).join('')}
       </div>
     </section>
 

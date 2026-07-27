@@ -94,6 +94,32 @@ export const content = {
       size: 'wide'
     }
   ],
+  certifications: {
+    title: 'Certificaciones',
+    downloadLabel: 'Descargar certificado',
+    items: [
+      {
+        image: 'certificados/001 - 9000 IQNET.png',
+        pdf: 'certificados/001 - 9000 IQNET.pdf',
+        alt: 'Certificado 9000 IQNET'
+      },
+      {
+        image: 'certificados/002 - 9000 IRAM.png',
+        pdf: 'certificados/002 - 9000 IRAM.pdf',
+        alt: 'Certificado 9000 IRAM'
+      },
+      {
+        image: 'certificados/003 - 14000 IQNET.png',
+        pdf: 'certificados/003 - 14000 IQNET.pdf',
+        alt: 'Certificado 14000 IQNET'
+      },
+      {
+        image: 'certificados/004 - 14000 IRAM.png',
+        pdf: 'certificados/004 - 14000 IRAM.pdf',
+        alt: 'Certificado 14000 IRAM'
+      }
+    ]
+  },
   contact: {
     title: 'Contactanos',
     description:
