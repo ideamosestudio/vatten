@@ -14,7 +14,6 @@ const cta = (className = 'cta-button') => `
     target="_blank"
     rel="noreferrer">
     <span>${content.cta.label}</span>
-    <b aria-hidden="true">↗</b>
   </a>
 `
 
@@ -27,7 +26,6 @@ const ctaGroup = (
     ${cta()}
     <a class="cta-button cta-button--secondary" href="${secondaryHref}">
       <span>${secondaryLabel}</span>
-      <b aria-hidden="true">↓</b>
     </a>
   </div>
 `
@@ -54,7 +52,6 @@ const serviceCard = (service, index) => `
         ${cta('cta-button cta-button--small')}
         <a class="cta-button cta-button--small cta-button--secondary" href="#contacto">
           <span>CONTACTO</span>
-          <b aria-hidden="true">↓</b>
         </a>
       </div>
     </div>
@@ -274,7 +271,6 @@ document.querySelector('#app').innerHTML = `
               href="${assetBase}${certificate.pdf}"
               download>
               <span>${content.certifications.downloadLabel}</span>
-              <b aria-hidden="true">↓</b>
             </a>
           </article>
         `).join('')}
@@ -308,7 +304,6 @@ document.querySelector('#app').innerHTML = `
           </div>
           <button class="submit-button" type="submit">
             <span>${content.contact.submit}</span>
-            <b aria-hidden="true">↗</b>
           </button>
         </form>
 
