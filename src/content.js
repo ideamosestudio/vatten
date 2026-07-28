@@ -27,12 +27,27 @@ export const content = {
       'Acompañamos a industrias y comercios con experiencia técnica, fabricación propia y laboratorio especializado.',
       'Con más de 30 años de trayectoria, desarrollamos tratamientos personalizados para optimizar el uso del agua en procesos industriales. Contamos con planta de fabricación, laboratorio propio y un equipo técnico orientado a resolver necesidades concretas en calderas, sistemas de enfriamiento, ósmosis inversa, ablandadores, intercambiadores y efluentes.',
       'Nuestro trabajo combina conocimiento, control y asistencia cercana para proteger instalaciones, mejorar la eficiencia operativa y acompañar la continuidad de cada cliente.'
+    ],
+    gallery: [
+      {
+        image: 'images/vatten/about/sistema-caldera.jpg',
+        alt: 'Sistema industrial de caldera instalado en planta'
+      },
+      {
+        image: 'images/vatten/about/planta-fabricacion.jpg',
+        alt: 'Planta de fabricación de VATTEN'
+      },
+      {
+        image: 'images/vatten/about/planta-exterior.jpg',
+        alt: 'Exterior de la planta de VATTEN'
+      }
+    ],
+    highlights: [
+      { number: '30+', label: 'años de experiencia en la industria', icon: 'experience' },
+      { label: 'Fabricación propia', icon: 'factory' },
+      { label: 'Laboratorio especializado', icon: 'lab' },
+      { label: 'Asistencia técnica', icon: 'support' }
     ]
-  },
-  bento: {
-    experienceNumber: '30+',
-    experienceLabel: 'años de experiencia en la industria',
-    concepts: ['Fabricación propia', 'Laboratorio especializado', 'Asistencia técnica']
   },
   servicesIntro: {
     label: 'CONOZCA NUESTROS SERVICIOS',

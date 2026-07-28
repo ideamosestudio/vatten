@@ -63,6 +63,7 @@ const serviceCard = (service, index) => `
 
 const lineIcon = (name) => {
   const paths = {
+    experience: '<circle cx="12" cy="12" r="8.5"/><path d="M12 7.5v5l3.25 2"/><path d="M8.5 2.8 7 1.5m8.5 1.3L17 1.5"/>',
     location: '<path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/>',
     phone: '<path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 2 .7 2.9a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.2-1.2a2 2 0 0 1 2.1-.5c.9.3 1.9.6 2.9.7a2 2 0 0 1 1.7 2Z"/>',
     email: '<rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3.5 6 8.5 7 8.5-7"/>',
@@ -83,8 +84,6 @@ const detailIcon = (label) => {
   if (label === 'EMAIL') return lineIcon('email')
   return lineIcon('location')
 }
-
-const conceptIcons = ['factory', 'lab', 'support']
 
 document.querySelector('#app').innerHTML = `
   <header class="site-header" data-header>
@@ -154,50 +153,71 @@ document.querySelector('#app').innerHTML = `
     </section>
 
     <section class="about section-shell" id="nosotros">
-      <div class="about-editorial">
-        <aside class="about-editorial__rail" data-reveal>
-          <p class="eyebrow">${content.about.label}</p>
-          <span class="about-editorial__marker" aria-hidden="true"></span>
-        </aside>
-
-        <div class="about-editorial__main">
+      <div class="about-redesign">
+        <header class="about-redesign__heading">
+          <p class="eyebrow" data-reveal>${content.about.label}</p>
           <h2
-            class="section-heading__split about-editorial__title"
+            class="section-heading__split"
             aria-label="${content.about.title}"
             data-reveal>
             <span>Somos una empresa enfocada</span>
             <em>en el tratamiento de aguas industriales</em>
           </h2>
+        </header>
 
-          <div class="about-editorial__rule" aria-hidden="true"></div>
-
-          <div class="about-editorial__copy">
+        <div class="about-redesign__overview">
+          <div class="about-redesign__copy">
             <p class="about__featured" data-reveal>${content.about.featured}</p>
             <div class="about__body">
               ${content.about.paragraphs.map((paragraph) => `<p data-reveal>${paragraph}</p>`).join('')}
-              <div data-reveal>${ctaGroup()}</div>
+            </div>
+          </div>
+
+          <div class="about-gallery" data-about-gallery data-reveal>
+            <div class="about-gallery__viewport">
+              ${content.about.gallery.map((image, index) => `
+                <figure
+                  class="about-gallery__slide ${index === 0 ? 'is-active' : ''}"
+                  data-about-slide
+                  aria-hidden="${index !== 0}">
+                  <img
+                    src="${assetBase}${image.image}"
+                    alt="${image.alt}"
+                    loading="${index === 0 ? 'eager' : 'lazy'}">
+                </figure>
+              `).join('')}
+              <div class="about-gallery__index" aria-hidden="true">
+                <span data-gallery-current>01</span>
+                <i></i>
+                <span>0${content.about.gallery.length}</span>
+              </div>
+            </div>
+            <div class="about-gallery__controls" aria-label="Imágenes sobre VATTEN">
+              ${content.about.gallery.map((image, index) => `
+                <button
+                  type="button"
+                  class="${index === 0 ? 'is-active' : ''}"
+                  data-about-control="${index}"
+                  aria-label="Ver imagen ${index + 1}"
+                  aria-pressed="${index === 0}">
+                  <span>0${index + 1}</span>
+                </button>
+              `).join('')}
             </div>
           </div>
         </div>
-      </div>
 
-      <div class="bento" aria-label="Presentación de VATTEN">
-        <article class="bento-card bento-card--experience bento-glow" data-reveal>
-          <strong>${content.bento.experienceNumber}</strong>
-          <p>${content.bento.experienceLabel}</p>
-          <span class="bento-card__rings" aria-hidden="true"></span>
-        </article>
-
-        ${content.bento.concepts.map((concept, index) => `
-          <article
-            class="bento-card bento-card--concept bento-card--concept-${index + 1} bento-glow"
-            data-reveal
-            style="--delay: ${(index + 1) * 80}ms">
-            <span class="bento-card__icon" aria-hidden="true">${lineIcon(conceptIcons[index])}</span>
-            <h3>${concept}</h3>
-          </article>
-        `).join('')}
-
+        <ul class="about-highlights" aria-label="Características de VATTEN" data-reveal>
+          ${content.about.highlights.map((highlight, index) => `
+            <li style="--delay: ${index * 70}ms">
+              <span class="about-highlights__icon" aria-hidden="true">${lineIcon(highlight.icon)}</span>
+              <div>
+                ${highlight.number ? `<strong>${highlight.number}</strong>` : ''}
+                <span>${highlight.label}</span>
+              </div>
+            </li>
+          `).join('')}
+        </ul>
       </div>
     </section>
 
@@ -403,6 +423,57 @@ document.querySelectorAll('[data-reveal]').forEach((element) => {
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
 const sectionVideos = [...document.querySelectorAll('.section-video')]
+const aboutGallery = document.querySelector('[data-about-gallery]')
+
+if (aboutGallery) {
+  const gallerySlides = [...aboutGallery.querySelectorAll('[data-about-slide]')]
+  const galleryControls = [...aboutGallery.querySelectorAll('[data-about-control]')]
+  const galleryCurrent = aboutGallery.querySelector('[data-gallery-current]')
+  let galleryIndex = 0
+  let galleryTimer = null
+
+  const showGallerySlide = (nextIndex) => {
+    galleryIndex = nextIndex
+    gallerySlides.forEach((slide, index) => {
+      const active = index === galleryIndex
+      slide.classList.toggle('is-active', active)
+      slide.setAttribute('aria-hidden', String(!active))
+    })
+    galleryControls.forEach((control, index) => {
+      const active = index === galleryIndex
+      control.classList.toggle('is-active', active)
+      control.setAttribute('aria-pressed', String(active))
+    })
+    galleryCurrent.textContent = `0${galleryIndex + 1}`
+  }
+
+  const stopGallery = () => {
+    if (!galleryTimer) return
+    window.clearInterval(galleryTimer)
+    galleryTimer = null
+  }
+
+  const startGallery = () => {
+    if (reducedMotion.matches || galleryTimer) return
+    galleryTimer = window.setInterval(() => {
+      showGallerySlide((galleryIndex + 1) % gallerySlides.length)
+    }, 5200)
+  }
+
+  galleryControls.forEach((control, index) => {
+    control.addEventListener('click', () => {
+      showGallerySlide(index)
+      stopGallery()
+      startGallery()
+    })
+  })
+
+  aboutGallery.addEventListener('mouseenter', stopGallery)
+  aboutGallery.addEventListener('mouseleave', startGallery)
+  aboutGallery.addEventListener('focusin', stopGallery)
+  aboutGallery.addEventListener('focusout', startGallery)
+  startGallery()
+}
 
 if (!reducedMotion.matches) {
   const videoObserver = new IntersectionObserver((entries) => {
