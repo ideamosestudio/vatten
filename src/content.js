@@ -106,8 +106,20 @@ export const content = {
         'Tratamiento de aguas residuales para una descarga segura, reutilización responsable y cumplimiento normativo.',
       text:
         'Aplicamos procesos físicos, químicos y biológicos para tratar aguas residuales, eliminando contaminantes y permitiendo su devolución segura al medio ambiente o su reutilización conforme a la normativa vigente.',
-      image: 'images/vatten/efluentes-industriales.jpg',
-      alt: 'Proceso de descarga y tratamiento de efluentes industriales',
+      images: [
+        {
+          image: 'images/vatten/efluentes-industriales.jpg',
+          alt: 'Proceso de descarga y tratamiento de efluentes industriales'
+        },
+        {
+          image: 'images/vatten/servicios/efluentes-2.jpg',
+          alt: 'Comparación de efluente antes y después del tratamiento'
+        },
+        {
+          image: 'images/vatten/servicios/efluentes-3.jpg',
+          alt: 'Tanque de tratamiento de efluentes en planta industrial'
+        }
+      ],
       position: 'center center',
       size: 'medium'
     },
