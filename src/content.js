@@ -16,7 +16,7 @@ export const content = {
     titlePrimary: 'Soluciones a medida',
     titleSecondary: 'para optimizar el agua de su industria',
     description:
-      'Tratamientos químicos, asistencia técnica y control especializado para calderas, sistemas de enfriamiento, ósmosis inversa y efluentes industriales.'
+      'Soluciones integrales en tratamiento de agua industrial: productos químicos, asistencia técnica, mantenimiento preventivo y correctivo, y control especializado para calderas, sistemas de enfriamiento, ablandadores, ósmosis inversa y efluentes industriales.'
   },
   about: {
     label: 'SOBRE NOSOTROS',

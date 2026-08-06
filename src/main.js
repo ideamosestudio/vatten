@@ -92,8 +92,6 @@ document.querySelector('#app').innerHTML = `
       ${content.navigation.map(navLink).join('')}
     </nav>
 
-    ${cta('header-cta')}
-
     <button
       class="menu-button"
       type="button"
