@@ -240,7 +240,13 @@ document.querySelector('#app').innerHTML = `
           <em>para ${content.servicesIntro.title.split(' para ')[1]}</em>
         </h2>
         <p data-reveal>${content.servicesIntro.description}</p>
-        <div data-reveal>${ctaGroup('cta-group--light', 'CONTACTO', '#contacto')}</div>
+        <div data-reveal>
+          <div class="cta-group cta-group--light">
+            <a class="cta-button cta-button--secondary" href="#contacto">
+              <span>CONTACTO</span>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
 
