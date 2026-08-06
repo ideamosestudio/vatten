@@ -131,8 +131,16 @@ export const content = {
         'Tratamientos para membranas que mejoran la eficiencia, previenen incrustaciones y reducen costos de mantenimiento.',
       text:
         'Ofrecemos programas de tratamiento para sistemas de membrana, como ósmosis inversa, ultrafiltración y nanofiltración, diseñados para prevenir y controlar incrustaciones y ensuciamiento, mejorando la eficiencia y reduciendo costos de mantenimiento.',
-      image: 'images/vatten/sistema-osmosis-inversa.jpg',
-      alt: 'Equipo industrial de membranas para sistema de ósmosis inversa',
+      images: [
+        {
+          image: 'images/vatten/sistema-osmosis-inversa.jpg',
+          alt: 'Equipo industrial de membranas para sistema de ósmosis inversa'
+        },
+        {
+          image: 'images/vatten/servicios/osmosis-2.jpg',
+          alt: 'Sistema de membranas de ósmosis inversa en planta'
+        }
+      ],
       position: 'center center',
       size: 'wide'
     }
