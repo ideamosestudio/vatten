@@ -128,6 +128,17 @@ document.querySelector('#app').innerHTML = `
     ${cta('mobile-menu__cta')}
   </div>
 
+  <a
+    class="whatsapp-float"
+    href="${content.whatsapp.href}"
+    target="_blank"
+    rel="noreferrer"
+    aria-label="${content.whatsapp.label}">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.24-1.37a9.9 9.9 0 0 0 4.8 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.5.05-.98.24-3.3-.7-2.8-1.13-4.6-3.97-4.74-4.15-.14-.19-1.13-1.51-1.13-2.88 0-1.37.72-2.04.97-2.32.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.37-.44.5-.15.15-.3.31-.13.6.17.29.76 1.27 1.64 2.06 1.13 1.02 2.08 1.34 2.37 1.49.29.15.46.13.63-.08.17-.21.72-.85.92-1.14.19-.29.39-.24.65-.14.26.1 1.68.8 1.97.94.29.15.48.22.55.34.07.12.07.7-.17 1.38Z"/>
+    </svg>
+  </a>
+
   <main>
     <section class="hero water-bg" id="inicio">
       <video
@@ -345,9 +356,9 @@ document.querySelector('#app').innerHTML = `
       <div class="map-wrap" data-reveal>
         <iframe
           title="Ubicación de VATTEN en Parque Industrial Moreno"
-          src="https://www.google.com/maps?q=Parque%20Industrial%20Moreno%20Cuartel%20V%20PIM%20II%20RP24%207900%20B1740ADB%20Buenos%20Aires%20Argentina&output=embed"
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2596.9278538334115!2d-58.825964!3d-34.56028750000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bc91506e966f73%3A0x1d904619559703c4!2sVatten%20Aguas%20y%20Servicios%20SRL!5e1!3m2!1ses!2sar!4v1786027994335!5m2!1ses!2sar"
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
+          referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen></iframe>
       </div>
     </section>

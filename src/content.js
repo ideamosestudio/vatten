@@ -4,6 +4,10 @@ export const content = {
     label: 'CONSULTE CON UN ESPECIALISTA',
     href: 'https://wa.link/2t2svz'
   },
+  whatsapp: {
+    href: 'https://wa.me/5491171805415',
+    label: 'Escribinos por WhatsApp'
+  },
   navigation: [
     { label: 'Inicio', href: '#inicio' },
     { label: 'Nosotros', href: '#nosotros' },
