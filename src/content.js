@@ -30,16 +30,12 @@ export const content = {
     ],
     gallery: [
       {
-        image: 'images/vatten/about/sistema-caldera.jpg',
-        alt: 'Sistema industrial de caldera instalado en planta'
-      },
-      {
-        image: 'images/vatten/about/planta-fabricacion.jpg',
-        alt: 'Planta de fabricación de VATTEN'
-      },
-      {
         image: 'images/vatten/about/planta-exterior.jpg',
-        alt: 'Exterior de la planta de VATTEN'
+        alt: 'Fachada de la planta de VATTEN'
+      },
+      {
+        image: 'images/vatten/about/laboratorio.jpg',
+        alt: 'Laboratorio de VATTEN'
       }
     ],
     highlights: [
