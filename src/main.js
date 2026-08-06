@@ -49,6 +49,14 @@ const serviceCard = (service, index) => {
           data-parallax
           style="object-position: ${service.position}">
       `).join('')}
+      ${rotates ? `
+        <button type="button" class="service-card__photo-nav service-card__photo-nav--prev" data-photo-prev aria-label="Foto anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg>
+        </button>
+        <button type="button" class="service-card__photo-nav service-card__photo-nav--next" data-photo-next aria-label="Foto siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
+        </button>
+      ` : ''}
     </div>
     <div class="service-card__body">
       <p class="eyebrow">${service.label}</p>
@@ -57,7 +65,7 @@ const serviceCard = (service, index) => {
       <p class="service-card__text">${service.text}</p>
       <div class="cta-group cta-group--card">
         <a class="cta-button cta-button--small" href="#contacto">
-          <span>CONTACTO</span>
+          <span>CONTÁCTENOS HOY</span>
         </a>
       </div>
     </div>
@@ -250,7 +258,7 @@ document.querySelector('#app').innerHTML = `
         <div data-reveal>
           <div class="cta-group cta-group--light">
             <a class="cta-button cta-button--secondary" href="#contacto">
-              <span>CONTACTO</span>
+              <span>CONTÁCTENOS HOY</span>
             </a>
           </div>
         </div>
@@ -483,18 +491,45 @@ if (aboutGallery) {
 }
 
 document.querySelectorAll('[data-photo-rotator]').forEach((rotator) => {
-  if (reducedMotion.matches) return
-
   const photos = [...rotator.querySelectorAll('.service-card__photo')]
   if (photos.length < 2) return
 
   let photoIndex = 0
-  window.setInterval(() => {
-    photoIndex = (photoIndex + 1) % photos.length
+  let rotatorTimer = null
+
+  const showPhoto = (nextIndex) => {
+    photoIndex = (nextIndex + photos.length) % photos.length
     photos.forEach((photo, index) => {
       photo.classList.toggle('is-active', index === photoIndex)
     })
-  }, 4200 + Math.random() * 600)
+  }
+
+  const stopRotator = () => {
+    if (!rotatorTimer) return
+    window.clearInterval(rotatorTimer)
+    rotatorTimer = null
+  }
+
+  const startRotator = () => {
+    if (reducedMotion.matches || rotatorTimer) return
+    rotatorTimer = window.setInterval(() => {
+      showPhoto(photoIndex + 1)
+    }, 4200 + Math.random() * 600)
+  }
+
+  rotator.querySelector('[data-photo-prev]')?.addEventListener('click', () => {
+    showPhoto(photoIndex - 1)
+    stopRotator()
+    startRotator()
+  })
+
+  rotator.querySelector('[data-photo-next]')?.addEventListener('click', () => {
+    showPhoto(photoIndex + 1)
+    stopRotator()
+    startRotator()
+  })
+
+  startRotator()
 })
 
 if (!reducedMotion.matches) {

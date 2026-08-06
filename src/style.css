@@ -670,11 +670,58 @@ figure {
   position: absolute;
   inset: 0;
   opacity: 0;
-  transition: opacity 900ms ease, transform 900ms var(--ease-out);
+}
+
+.service-card__image[data-photo-rotator] .service-card__photo {
+  transition: opacity 1400ms var(--ease-out), transform 1400ms var(--ease-out);
 }
 
 .service-card__photo.is-active {
+  z-index: 1;
   opacity: 1;
+}
+
+.service-card__photo-nav {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 999px;
+  background: rgba(3, 5, 8, 0.32);
+  color: var(--white);
+  opacity: 0;
+  transform: translateY(-50%);
+  backdrop-filter: blur(8px);
+  transition: opacity 280ms ease, background 220ms ease, border-color 220ms ease;
+  cursor: pointer;
+}
+
+.service-card__photo-nav svg {
+  width: 17px;
+  height: 17px;
+}
+
+.service-card__photo-nav--prev {
+  left: 16px;
+}
+
+.service-card__photo-nav--next {
+  right: 16px;
+}
+
+.service-card__image[data-photo-rotator]:hover .service-card__photo-nav,
+.service-card__photo-nav:focus-visible {
+  opacity: 1;
+}
+
+.service-card__photo-nav:hover {
+  border-color: rgba(255, 255, 255, 0.55);
+  background: rgba(3, 5, 8, 0.5);
 }
 
 .service-card__body {
