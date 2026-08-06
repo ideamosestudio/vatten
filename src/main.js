@@ -49,8 +49,7 @@ const serviceCard = (service, index) => `
       <p class="service-card__summary">${service.summary}</p>
       <p class="service-card__text">${service.text}</p>
       <div class="cta-group cta-group--card">
-        ${cta('cta-button cta-button--small')}
-        <a class="cta-button cta-button--small cta-button--secondary" href="#contacto">
+        <a class="cta-button cta-button--small" href="#contacto">
           <span>CONTACTO</span>
         </a>
       </div>
