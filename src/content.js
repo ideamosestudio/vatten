@@ -147,6 +147,20 @@ export const content = {
       ],
       position: 'center center',
       size: 'wide'
+    },
+    {
+      slug: 'ablandadores',
+      label: 'SERVICIOS',
+      title: 'Ablandadores de agua',
+      summary:
+        'Sistemas diseñados para eliminar la dureza del agua, prevenir incrustaciones y proteger equipos industriales.',
+      text:
+        'Brindamos soluciones de ablandamiento de agua adaptadas a cada proceso, reduciendo la formación de sarro en calderas, intercambiadores de calor, tuberías y equipos de producción. Esto permite optimizar el rendimiento de las instalaciones, prolongar la vida útil de los equipos y disminuir los costos de mantenimiento y operación.',
+      image: 'images/vatten/sistema-ablandadores.jpg',
+      alt: 'Tanques industriales de un sistema de ablandadores de agua',
+      video: 'video/ablandadores.mp4',
+      position: 'center center',
+      size: 'medium'
     }
   ],
   certifications: {

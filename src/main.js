@@ -57,6 +57,11 @@ const serviceCard = (service, index) => {
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg>
         </button>
       ` : ''}
+      ${service.video ? `
+        <button type="button" class="service-card__play" data-video-trigger="${assetBase}${service.video}" aria-label="Reproducir video de ${service.title}">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+      ` : ''}
     </div>
     <div class="service-card__body">
       <p class="eyebrow">${service.label}</p>
@@ -151,6 +156,17 @@ document.querySelector('#app').innerHTML = `
       <path d="M6 11l6-6 6 6"/>
     </svg>
   </button>
+
+  <div class="video-modal" data-video-modal aria-hidden="true">
+    <div class="video-modal__panel">
+      <button type="button" class="video-modal__close" data-video-close aria-label="Cerrar video">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M6 6l12 12M18 6 6 18"/>
+        </svg>
+      </button>
+      <video data-video-modal-player controls playsinline></video>
+    </div>
+  </div>
 
   <main>
     <section class="hero water-bg" id="inicio">
@@ -450,6 +466,36 @@ window.addEventListener('scroll', () => {
 
 backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' })
+})
+
+const videoModal = document.querySelector('[data-video-modal]')
+const videoModalPlayer = videoModal.querySelector('[data-video-modal-player]')
+
+const closeVideoModal = () => {
+  videoModal.classList.remove('is-open')
+  videoModal.setAttribute('aria-hidden', 'true')
+  videoModalPlayer.pause()
+  videoModalPlayer.removeAttribute('src')
+  videoModalPlayer.load()
+}
+
+const openVideoModal = (src) => {
+  videoModalPlayer.src = src
+  videoModal.classList.add('is-open')
+  videoModal.setAttribute('aria-hidden', 'false')
+  videoModalPlayer.play().catch(() => {})
+}
+
+document.querySelectorAll('[data-video-trigger]').forEach((trigger) => {
+  trigger.addEventListener('click', () => openVideoModal(trigger.dataset.videoTrigger))
+})
+
+videoModal.querySelector('[data-video-close]').addEventListener('click', closeVideoModal)
+videoModal.addEventListener('click', (event) => {
+  if (event.target === videoModal) closeVideoModal()
+})
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeVideoModal()
 })
 
 document.querySelectorAll('[data-split]').forEach((element) => {
