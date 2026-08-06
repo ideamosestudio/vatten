@@ -85,7 +85,8 @@ const detailIcon = (label) => {
 document.querySelector('#app').innerHTML = `
   <header class="site-header" data-header>
     <a class="site-logo" href="#inicio" aria-label="${content.brand}, Inicio">
-      <img src="${assetBase}images/vatten/vatten-logo.png" alt="${content.brand}">
+      <img class="site-logo__img site-logo__img--light" src="${assetBase}images/vatten/vatten-logo-light.png" alt="${content.brand}">
+      <img class="site-logo__img site-logo__img--dark" src="${assetBase}images/vatten/vatten-logo-dark.png" alt="${content.brand}">
     </a>
 
     <nav class="desktop-nav" aria-label="Navegación principal">
@@ -334,7 +335,7 @@ document.querySelector('#app').innerHTML = `
   <footer class="site-footer">
     <div class="site-footer__top section-shell">
       <div class="footer-brand">
-        <img src="${assetBase}images/vatten/vatten-logo.png" alt="${content.brand}">
+        <img src="${assetBase}images/vatten/vatten-logo-light.png" alt="${content.brand}">
       </div>
 
       <nav class="footer-nav" aria-label="Navegación del pie">

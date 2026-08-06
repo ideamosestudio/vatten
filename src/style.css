@@ -154,6 +154,18 @@ figure {
   height: auto;
 }
 
+.site-logo__img--dark {
+  display: none;
+}
+
+.site-header.is-scrolled .site-logo__img--light {
+  display: none;
+}
+
+.site-header.is-scrolled .site-logo__img--dark {
+  display: block;
+}
+
 .desktop-nav {
   display: flex;
   align-items: center;
