@@ -60,8 +60,20 @@ export const content = {
         'Químicos y control inteligente para proteger calderas, evitar fallas y optimizar el rendimiento del sistema.',
       text:
         'Los productos químicos de VATTEN AGUAS Y SERVICIOS están diseñados para prevenir la corrosión y la incrustación en sistemas de vapor y calderas, protegiendo la alimentación, el tratamiento interno y el condensado. Además, integran monitoreo y control automatizados para optimizar el funcionamiento del sistema.',
-      image: 'images/vatten/sistema-caldera-vapor.png',
-      alt: 'Técnico inspeccionando un sistema industrial de caldera y vapor',
+      images: [
+        {
+          image: 'images/vatten/sistema-caldera-vapor.png',
+          alt: 'Técnico inspeccionando un sistema industrial de caldera y vapor'
+        },
+        {
+          image: 'images/vatten/servicios/caldera-vapor-2.jpg',
+          alt: 'Chimeneas industriales de un sistema de caldera y vapor'
+        },
+        {
+          image: 'images/vatten/servicios/caldera-vapor-3.jpg',
+          alt: 'Caldera industrial de vapor en planta'
+        }
+      ],
       position: 'center center',
       size: 'large'
     },
@@ -73,8 +85,16 @@ export const content = {
         'Soluciones para optimizar la transferencia de calor y proteger sistemas de refrigeración y agua de proceso.',
       text:
         'Desarrollamos soluciones personalizadas para sistemas de refrigeración y agua de proceso, enfocadas en optimizar la transferencia de calor mediante la prevención de incrustaciones, corrosión y contaminación biológica.',
-      image: 'images/vatten/torres-enfriamiento.png',
-      alt: 'Torres industriales de enfriamiento de agua',
+      images: [
+        {
+          image: 'images/vatten/torres-enfriamiento.png',
+          alt: 'Torres industriales de enfriamiento de agua'
+        },
+        {
+          image: 'images/vatten/servicios/enfriamiento-2.jpg',
+          alt: 'Torres de enfriamiento SINAX instaladas en planta'
+        }
+      ],
       position: 'center center',
       size: 'medium'
     },

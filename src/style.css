@@ -857,6 +857,21 @@ figure {
   transform: translate3d(0, var(--parallax-y, 0), 0) scale(1.08);
 }
 
+.service-card__image[data-photo-rotator] {
+  position: relative;
+}
+
+.service-card__photo {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 900ms ease, transform 900ms var(--ease-out);
+}
+
+.service-card__photo.is-active {
+  opacity: 1;
+}
+
 .service-card__body {
   padding: clamp(28px, 3.5vw, 50px);
   display: flex;

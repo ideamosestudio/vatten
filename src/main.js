@@ -30,18 +30,25 @@ const ctaGroup = (
   </div>
 `
 
-const serviceCard = (service, index) => `
+const serviceCard = (service, index) => {
+  const photos = service.images ?? [{ image: service.image, alt: service.alt }]
+  const rotates = photos.length > 1
+
+  return `
   <article
     class="service-card service-card--${service.size} service-card--${service.slug}"
     data-reveal
     style="--delay: ${index * 90}ms">
-    <div class="service-card__image image-mask">
-      <img
-        src="${assetBase}${service.image}"
-        alt="${service.alt}"
-        loading="lazy"
-        data-parallax
-        style="object-position: ${service.position}">
+    <div class="service-card__image image-mask" ${rotates ? 'data-photo-rotator' : ''}>
+      ${photos.map((photo, photoIndex) => `
+        <img
+          class="${rotates ? `service-card__photo ${photoIndex === 0 ? 'is-active' : ''}` : ''}"
+          src="${assetBase}${photo.image}"
+          alt="${photo.alt}"
+          loading="lazy"
+          data-parallax
+          style="object-position: ${service.position}">
+      `).join('')}
     </div>
     <div class="service-card__body">
       <p class="eyebrow">${service.label}</p>
@@ -56,6 +63,7 @@ const serviceCard = (service, index) => `
     </div>
   </article>
 `
+}
 
 const lineIcon = (name) => {
   const paths = {
@@ -473,6 +481,21 @@ if (aboutGallery) {
   aboutGallery.addEventListener('focusout', startGallery)
   startGallery()
 }
+
+document.querySelectorAll('[data-photo-rotator]').forEach((rotator) => {
+  if (reducedMotion.matches) return
+
+  const photos = [...rotator.querySelectorAll('.service-card__photo')]
+  if (photos.length < 2) return
+
+  let photoIndex = 0
+  window.setInterval(() => {
+    photoIndex = (photoIndex + 1) % photos.length
+    photos.forEach((photo, index) => {
+      photo.classList.toggle('is-active', index === photoIndex)
+    })
+  }, 4200 + Math.random() * 600)
+})
 
 if (!reducedMotion.matches) {
   const videoObserver = new IntersectionObserver((entries) => {
