@@ -185,7 +185,9 @@ export const content = {
       {
         label: 'DIRECCIÓN',
         value:
-          'Parque Industrial Moreno Cuartel V – PIM II RP24 7900, B1740ADB Buenos Aires, Argentina'
+          'Parque Industrial Moreno Cuartel V – PIM II RP24 7900, B1740ADB Buenos Aires, Argentina',
+        directionsHref:
+          'https://www.google.com/maps/dir//Vatten+Aguas+y+Servicios+SRL,+RP24+7900,+B1744+Cuartel+V,+Provincia+de+Buenos+Aires/@-34.5602875,-58.825964,596m/data=!3m1!1e3!4m17!1m7!3m6!1s0x95bc91506e966f73:0x1d904619559703c4!2sVatten+Aguas+y+Servicios+SRL!8m2!3d-34.5602875!4d-58.825964!16s%2Fg%2F11c54n488s!4m8!1m0!1m5!1m1!1s0x95bc91506e966f73:0x1d904619559703c4!2m2!1d-58.825964!2d-34.5602875!3e0?hl=es-ES&entry=ttu&g_ep=EgoyMDI2MDgwMy4wIKXMDSoASAFQAw%3D%3D'
       },
       { label: 'TELÉFONO', value: '+54 911 7180 5415', href: 'tel:+5491171805415' },
       {
@@ -193,6 +195,11 @@ export const content = {
         value: 'comercial@vattenaguas.ar',
         href: 'mailto:comercial@vattenaguas.ar'
       }
-    ]
+    ],
+    social: {
+      label: 'INSTAGRAM',
+      value: 'Seguinos en Instagram',
+      href: 'https://www.instagram.com/vattenaguas'
+    }
   }
 }
