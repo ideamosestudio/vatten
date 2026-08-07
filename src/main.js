@@ -143,7 +143,7 @@ document.querySelector('#app').innerHTML = `
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
     <div class="mobile-menu__orb" aria-hidden="true"></div>
     <p class="mobile-menu__eyebrow" aria-hidden="true">
-      <span>VATTEN S.R.L.</span>
+      <span>${content.brand}</span>
       <span>30+ años tratando agua industrial</span>
     </p>
     <nav class="mobile-menu__nav" aria-label="Navegación móvil">

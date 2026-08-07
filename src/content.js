@@ -2,7 +2,7 @@ export const content = {
   brand: 'VATTEN AGUAS Y SERVICIOS SRL',
   cta: {
     label: 'CONSULTE CON UN ESPECIALISTA',
-    href: 'https://wa.link/2t2svz'
+    href: 'https://wa.me/5491171805415'
   },
   whatsapp: {
     href: 'https://wa.me/5491171805415',
