@@ -177,27 +177,16 @@ export const content = {
   ],
   certifications: {
     title: 'Certificaciones',
-    downloadLabel: 'Descargar certificado',
-    items: [
+    badges: [
       {
-        image: 'certificados/001 - 9000 IQNET.png',
-        pdf: 'certificados/001 - 9000 IQNET.pdf',
-        alt: 'Certificado 9000 IQNET'
+        label: 'Gestión de calidad',
+        code: 'RI 9000-17581',
+        standard: 'IRAM-ISO 9001:2015'
       },
       {
-        image: 'certificados/002 - 9000 IRAM.png',
-        pdf: 'certificados/002 - 9000 IRAM.pdf',
-        alt: 'Certificado 9000 IRAM'
-      },
-      {
-        image: 'certificados/003 - 14000 IQNET.png',
-        pdf: 'certificados/003 - 14000 IQNET.pdf',
-        alt: 'Certificado 14000 IQNET'
-      },
-      {
-        image: 'certificados/004 - 14000 IRAM.png',
-        pdf: 'certificados/004 - 14000 IRAM.pdf',
-        alt: 'Certificado 14000 IRAM'
+        label: 'Gestión ambiental',
+        code: 'RI 14000-2015',
+        standard: 'IRAM-ISO 14001:9348'
       }
     ]
   },

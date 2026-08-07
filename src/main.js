@@ -348,20 +348,16 @@ document.querySelector('#app').innerHTML = `
       </div>
 
       <div class="certifications__grid">
-        ${content.certifications.items.map((certificate, index) => `
-          <article class="certificate-card" data-reveal style="--delay: ${index * 80}ms">
-            <div class="certificate-card__image">
-              <img
-                src="${assetBase}${certificate.image}"
-                alt="${certificate.alt}"
-                loading="lazy">
+        ${content.certifications.badges.map((badge, index) => `
+          <article class="badge-card" data-reveal style="--delay: ${index * 80}ms">
+            <div class="badge-card__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
             </div>
-            <a
-              class="certificate-card__download"
-              href="${assetBase}${certificate.pdf}"
-              download>
-              <span>${content.certifications.downloadLabel}</span>
-            </a>
+            <div class="badge-card__divider" aria-hidden="true"></div>
+            <div class="badge-card__text">
+              <h3>${badge.label}</h3>
+              <p>${badge.code} · ${badge.standard}</p>
+            </div>
           </article>
         `).join('')}
       </div>
