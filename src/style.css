@@ -117,9 +117,9 @@ figure {
   z-index: 100;
   top: 20px;
   left: 50%;
-  width: min(calc(100% - 40px), 1150px);
-  min-height: 70px;
-  padding: 10px 11px 10px 23px;
+  width: min(calc(100% - 40px), 1190px);
+  min-height: 82px;
+  padding: 14px 20px 14px 28px;
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -170,14 +170,15 @@ figure {
   display: flex;
   align-items: center;
   justify-self: end;
-  gap: clamp(18px, 2vw, 31px);
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 0.76rem;
-  font-weight: 400;
+  gap: clamp(20px, 2.1vw, 34px);
+  color: rgba(255, 255, 255, 0.86);
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
 }
 
 .site-header.is-scrolled .desktop-nav {
-  color: rgba(3, 16, 35, 0.62);
+  color: rgba(3, 16, 35, 0.74);
 }
 
 .site-header.is-scrolled .desktop-nav a:hover {
@@ -1293,7 +1294,7 @@ figure {
     height: 1.5px;
     display: block;
     background: var(--white);
-    transition: transform 260ms ease;
+    transition: transform 380ms var(--ease-out);
   }
 
   .menu-button.is-open span:first-child {
@@ -1308,57 +1309,118 @@ figure {
     position: fixed;
     z-index: 90;
     inset: 0;
-    padding: 125px 35px 42px;
+    padding: 122px 35px 36px;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     color: var(--white);
     background:
       radial-gradient(circle at 90% 80%, var(--blue-300), transparent 43%),
       linear-gradient(150deg, var(--blue-950), var(--blue-700));
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 320ms ease, visibility 320ms;
+    pointer-events: none;
+    clip-path: circle(1px at calc(100% - 58px) 58px);
+    transition: clip-path 620ms cubic-bezier(0.65, 0, 0.35, 1);
   }
 
   .mobile-menu.is-open {
-    visibility: visible;
-    opacity: 1;
+    pointer-events: auto;
+    clip-path: circle(2200px at calc(100% - 58px) 58px);
   }
 
-  .mobile-menu nav {
+  .mobile-menu__eyebrow {
     position: relative;
     z-index: 2;
     display: flex;
     flex-direction: column;
-  }
-
-  .mobile-menu nav a {
-    width: fit-content;
-    padding: 8px 0;
-    font-size: clamp(2.9rem, 8vw, 5.4rem);
-    font-weight: 700;
-    line-height: 1;
-    letter-spacing: -0.02em;
+    gap: 4px;
+    margin: 0 0 auto;
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 450ms var(--ease-out), transform 500ms var(--ease-out);
+    transform: translateY(10px);
+    transition: opacity 420ms var(--ease-out), transform 460ms var(--ease-out);
   }
 
-  .mobile-menu.is-open nav a {
+  .mobile-menu.is-open .mobile-menu__eyebrow {
     opacity: 1;
     transform: translateY(0);
   }
 
-  .mobile-menu.is-open nav a:nth-child(2) { transition-delay: 50ms; }
-  .mobile-menu.is-open nav a:nth-child(3) { transition-delay: 100ms; }
-  .mobile-menu.is-open nav a:nth-child(4) { transition-delay: 150ms; }
-  .mobile-menu.is-open nav a:nth-child(5) { transition-delay: 200ms; }
+  .mobile-menu__eyebrow span:first-child {
+    color: var(--white);
+  }
 
-  .mobile-menu__cta {
+  .mobile-menu__nav {
     position: relative;
     z-index: 2;
+    display: flex;
+    flex-direction: column;
+    margin: 26px 0 34px;
+  }
+
+  .mobile-menu__nav a {
+    display: flex;
+    align-items: baseline;
+    gap: 14px;
+    width: fit-content;
+    padding: 9px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    font-size: clamp(2.5rem, 7.4vw, 4.6rem);
+    font-weight: 700;
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 450ms var(--ease-out), transform 500ms var(--ease-out), color 200ms ease;
+  }
+
+  .mobile-menu__nav a:last-child {
+    border-bottom: 0;
+  }
+
+  .mobile-menu__nav a em {
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-style: normal;
+    letter-spacing: 0.04em;
+    color: var(--blue-300);
+  }
+
+  .mobile-menu__nav a:active {
+    color: var(--blue-300);
+  }
+
+  .mobile-menu.is-open .mobile-menu__nav a {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-menu.is-open .mobile-menu__nav a:nth-child(1) { transition-delay: 80ms; }
+  .mobile-menu.is-open .mobile-menu__nav a:nth-child(2) { transition-delay: 130ms; }
+  .mobile-menu.is-open .mobile-menu__nav a:nth-child(3) { transition-delay: 180ms; }
+  .mobile-menu.is-open .mobile-menu__nav a:nth-child(4) { transition-delay: 230ms; }
+  .mobile-menu.is-open .mobile-menu__nav a:nth-child(5) { transition-delay: 280ms; }
+
+  .mobile-menu__footer {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 420ms var(--ease-out) 260ms, transform 460ms var(--ease-out) 260ms;
+  }
+
+  .mobile-menu.is-open .mobile-menu__footer {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .mobile-menu__cta {
     min-height: 58px;
     padding: 0 20px;
     display: flex;
@@ -1369,6 +1431,34 @@ figure {
     background: var(--white);
     font-size: 0.7rem;
     font-weight: 700;
+  }
+
+  .mobile-menu__quick {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mobile-menu__quick a {
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 13px;
+    color: var(--white);
+    background: rgba(255, 255, 255, 0.06);
+    transition: background 200ms ease, transform 200ms ease;
+  }
+
+  .mobile-menu__quick a:active {
+    background: rgba(255, 255, 255, 0.16);
+    transform: scale(0.94);
+  }
+
+  .mobile-menu__quick a svg {
+    width: 19px;
+    height: 19px;
   }
 
   .mobile-menu__orb {
@@ -2042,14 +2132,14 @@ figure {
 
 /* 2026 compact editorial redesign */
 .site-header {
-  max-width: 1040px;
-  min-height: 66px;
-  padding: 8px 10px 8px 20px;
-  border-radius: 28px;
+  max-width: 1080px;
+  min-height: 80px;
+  padding: 14px 20px 14px 28px;
+  border-radius: 26px;
 }
 
 .site-logo {
-  width: 148px;
+  width: 158px;
 }
 
 .section-video,
@@ -2527,11 +2617,11 @@ figure {
 .site-header {
   width: min(calc(100% - 56px), 1340px);
   max-width: 1340px;
-  min-height: 72px;
-  padding: 9px 12px 9px 24px;
-  background: rgba(3, 16, 35, 0.42);
+  min-height: 84px;
+  padding: 15px 22px 15px 30px;
+  background: rgba(3, 16, 35, 0.62);
   border-color: rgba(255, 255, 255, 0.22);
-  border-radius: 30px;
+  border-radius: 26px;
   backdrop-filter: blur(22px) saturate(1.28);
   transition:
     top 380ms var(--ease-out),

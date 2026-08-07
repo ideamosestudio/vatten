@@ -129,10 +129,29 @@ document.querySelector('#app').innerHTML = `
 
   <div class="mobile-menu" id="mobile-menu" aria-hidden="true" data-mobile-menu>
     <div class="mobile-menu__orb" aria-hidden="true"></div>
-    <nav aria-label="Navegación móvil">
-      ${content.navigation.map(navLink).join('')}
+    <p class="mobile-menu__eyebrow" aria-hidden="true">
+      <span>VATTEN S.R.L.</span>
+      <span>30+ años tratando agua industrial</span>
+    </p>
+    <nav class="mobile-menu__nav" aria-label="Navegación móvil">
+      ${content.navigation.map((link, index) => `
+        <a href="${link.href}">
+          <em>0${index + 1}</em>
+          <span>${link.label}</span>
+        </a>
+      `).join('')}
     </nav>
-    ${cta('mobile-menu__cta')}
+    <div class="mobile-menu__footer">
+      ${cta('mobile-menu__cta')}
+      <div class="mobile-menu__quick">
+        <a href="${content.whatsapp.href}" target="_blank" rel="noreferrer" aria-label="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2c-5.5 0-9.96 4.46-9.96 9.96 0 1.76.46 3.45 1.33 4.95L2 22l5.24-1.37a9.9 9.9 0 0 0 4.8 1.23h.01c5.5 0 9.96-4.46 9.96-9.96S17.54 2 12.04 2Zm5.8 14.14c-.24.68-1.4 1.3-1.93 1.35-.5.05-.98.24-3.3-.7-2.8-1.13-4.6-3.97-4.74-4.15-.14-.19-1.13-1.51-1.13-2.88 0-1.37.72-2.04.97-2.32.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.24.58.81 2 .88 2.15.07.15.12.32.02.51-.1.19-.15.31-.3.48-.15.17-.31.37-.44.5-.15.15-.3.31-.13.6.17.29.76 1.27 1.64 2.06 1.13 1.02 2.08 1.34 2.37 1.49.29.15.46.13.63-.08.17-.21.72-.85.92-1.14.19-.29.39-.24.65-.14.26.1 1.68.8 1.97.94.29.15.48.22.55.34.07.12.07.7-.17 1.38Z"/></svg>
+        </a>
+        <a href="${content.contact.details.find((d) => d.label === 'TELÉFONO').href}" aria-label="Llamar por teléfono">${lineIcon('phone')}</a>
+        <a href="${content.contact.details.find((d) => d.label === 'EMAIL').href}" aria-label="Enviar email">${lineIcon('email')}</a>
+        <a href="${content.contact.social.href}" target="_blank" rel="noreferrer" aria-label="Instagram">${lineIcon('instagram')}</a>
+      </div>
+    </div>
   </div>
 
   <a
