@@ -8,6 +8,11 @@ export const content = {
     href: 'https://wa.me/5491171805415',
     label: 'Escribinos por WhatsApp'
   },
+  credits: {
+    prefix: 'Concepto por',
+    label: 'Estudio Ideamos',
+    href: 'https://ideamos.com.ar'
+  },
   marquee: [
     'Sistema de caldera y vapor',
     'Sistema de enfriamiento',
@@ -198,7 +203,7 @@ export const content = {
     ]
   },
   contact: {
-    title: 'Contactanos',
+    title: 'Contáctenos',
     description:
       'Complete el formulario con sus datos de contacto y en breve nos estaremos comunicando con usted.',
     fields: ['Nombre', 'Email', 'Teléfono', 'Empresa', 'Mensaje'],

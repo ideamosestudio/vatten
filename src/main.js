@@ -369,7 +369,7 @@ document.querySelector('#app').innerHTML = `
 
     <section class="contact section-shell" id="contacto">
       <div class="contact__intro">
-        <p class="eyebrow" data-reveal>CONTACTO</p>
+        <p class="eyebrow eyebrow--light" data-reveal>CONTACTO</p>
         <h2 data-split data-reveal>${content.contact.title}</h2>
         <p data-reveal>${content.contact.description}</p>
       </div>
@@ -457,7 +457,10 @@ document.querySelector('#app').innerHTML = `
 
     <div class="site-footer__bottom section-shell">
       <p>${content.brand}</p>
-      <a href="#inicio">Inicio ↑</a>
+      <p class="site-footer__credits">
+        ${content.credits.prefix}
+        <a href="${content.credits.href}" target="_blank" rel="noreferrer">${content.credits.label}</a>
+      </p>
     </div>
 
   </footer>
