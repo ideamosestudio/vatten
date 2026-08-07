@@ -341,7 +341,7 @@ document.querySelector('#app').innerHTML = `
       </div>
     </section>
 
-    <section class="certifications section-shell" aria-labelledby="certifications-title">
+    <section class="certifications section-shell" id="insignias" aria-labelledby="certifications-title">
       <div class="certifications__heading" data-reveal>
         <p class="eyebrow">${content.certifications.title.toUpperCase()}</p>
         <h2 id="certifications-title">${content.certifications.title}</h2>

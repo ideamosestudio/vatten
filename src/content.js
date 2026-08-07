@@ -25,6 +25,7 @@ export const content = {
     { label: 'Inicio', href: '#inicio' },
     { label: 'Nosotros', href: '#nosotros' },
     { label: 'Servicios', href: '#servicios' },
+    { label: 'Insignias', href: '#insignias' },
     { label: 'Contacto', href: '#contacto' }
   ],
   hero: {
