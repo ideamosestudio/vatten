@@ -293,7 +293,7 @@ document.querySelector('#app').innerHTML = `
             <li style="--delay: ${index * 70}ms">
               <span class="about-highlights__icon" aria-hidden="true">${lineIcon(highlight.icon)}</span>
               <div>
-                ${highlight.number ? `<strong>${highlight.number}</strong>` : ''}
+                ${highlight.number ? `<strong><span data-count-to="${parseInt(highlight.number, 10)}">0</span>${highlight.number.replace(/^[0-9]+/, '')}</strong>` : ''}
                 <span>${highlight.label}</span>
               </div>
             </li>
@@ -571,6 +571,34 @@ document.querySelectorAll('[data-reveal]').forEach((element) => {
 })
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
+
+const animateCount = (el) => {
+  const target = parseInt(el.dataset.countTo, 10)
+  if (reducedMotion.matches) {
+    el.textContent = target
+    return
+  }
+  const duration = 1200
+  const start = performance.now()
+  const step = (now) => {
+    const progress = Math.min((now - start) / duration, 1)
+    const eased = 1 - (1 - progress) ** 3
+    el.textContent = Math.round(eased * target)
+    if (progress < 1) requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
+
+const countObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return
+    animateCount(entry.target)
+    countObserver.unobserve(entry.target)
+  })
+}, { threshold: 0.4 })
+
+document.querySelectorAll('[data-count-to]').forEach((el) => countObserver.observe(el))
+
 const sectionVideos = [...document.querySelectorAll('.section-video')]
 const aboutGallery = document.querySelector('[data-about-gallery]')
 
