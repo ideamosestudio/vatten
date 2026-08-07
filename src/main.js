@@ -86,11 +86,6 @@ const serviceCard = (service, index) => {
       <h3>${service.title}</h3>
       <p class="service-card__summary">${service.summary}</p>
       <p class="service-card__text">${service.text}</p>
-      <div class="cta-group cta-group--card">
-        <a class="cta-button cta-button--small" href="#contacto">
-          <span>CONTÁCTENOS HOY</span>
-        </a>
-      </div>
     </div>
   </article>
 `
