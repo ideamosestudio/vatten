@@ -730,6 +730,7 @@ figure {
 }
 
 .service-card__image {
+  position: relative;
   height: 390px;
   margin: 13px 13px 0;
   overflow: hidden;
