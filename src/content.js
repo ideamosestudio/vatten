@@ -79,7 +79,7 @@ export const content = {
         'Los productos químicos de VATTEN AGUAS Y SERVICIOS están diseñados para prevenir la corrosión y la incrustación en sistemas de vapor y calderas, protegiendo la alimentación, el tratamiento interno y el condensado. Además, integran monitoreo y control automatizados para optimizar el funcionamiento del sistema.',
       images: [
         {
-          image: 'images/vatten/sistema-caldera-vapor.png',
+          image: 'images/vatten/sistema-caldera-vapor.jpg',
           alt: 'Técnico inspeccionando un sistema industrial de caldera y vapor'
         },
         {
@@ -104,7 +104,7 @@ export const content = {
         'Desarrollamos soluciones personalizadas para sistemas de refrigeración y agua de proceso, enfocadas en optimizar la transferencia de calor mediante la prevención de incrustaciones, corrosión y contaminación biológica.',
       images: [
         {
-          image: 'images/vatten/torres-enfriamiento.png',
+          image: 'images/vatten/torres-enfriamiento.jpg',
           alt: 'Torres industriales de enfriamiento de agua'
         },
         {
