@@ -213,6 +213,72 @@ figure {
   right: 0;
 }
 
+.nav-dropdown {
+  position: relative;
+}
+
+.nav-dropdown > a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.nav-dropdown > a svg {
+  width: 13px;
+  height: 13px;
+  transition: transform 220ms ease;
+}
+
+.nav-dropdown:hover > a svg,
+.nav-dropdown:focus-within > a svg {
+  transform: rotate(180deg);
+}
+
+.nav-dropdown__panel {
+  position: absolute;
+  z-index: 20;
+  top: 100%;
+  left: 50%;
+  display: flex;
+  flex-direction: column;
+  min-width: 250px;
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 16px;
+  background: var(--white);
+  box-shadow: 0 24px 48px rgba(2, 47, 101, 0.18);
+  opacity: 0;
+  pointer-events: none;
+  transform: translate(-50%, 6px);
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+.nav-dropdown:hover .nav-dropdown__panel,
+.nav-dropdown:focus-within .nav-dropdown__panel {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate(-50%, 0);
+}
+
+.nav-dropdown__panel a {
+  padding: 11px 16px;
+  border-radius: 10px;
+  color: var(--black);
+  font-size: 0.8rem;
+  font-weight: 500;
+  white-space: nowrap;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+.nav-dropdown__panel a::after {
+  content: none;
+}
+
+.nav-dropdown__panel a:hover {
+  background: var(--blue-100);
+  color: var(--blue-700);
+}
+
 .cta-button b,
 .submit-button b {
   font-size: 1rem;

@@ -7,6 +7,24 @@ const navLink = ({ label, href, external = false }) => `
   <a href="${href}" ${external ? 'target="_blank" rel="noreferrer"' : ''}>${label}</a>
 `
 
+const desktopNavItem = (link) => {
+  if (link.href !== '#servicios') return navLink(link)
+
+  return `
+    <div class="nav-dropdown">
+      <a href="${link.href}">
+        ${link.label}
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+      </a>
+      <div class="nav-dropdown__panel">
+        ${content.services.map((service) => `
+          <a href="#${service.slug}">${service.title}</a>
+        `).join('')}
+      </div>
+    </div>
+  `
+}
+
 const cta = (className = 'cta-button') => `
   <a
     class="${className}"
@@ -36,6 +54,7 @@ const serviceCard = (service, index) => {
 
   return `
   <article
+    id="${service.slug}"
     class="service-card service-card--${service.size} service-card--${service.slug}"
     data-reveal
     style="--delay: ${index * 90}ms">
@@ -112,7 +131,7 @@ document.querySelector('#app').innerHTML = `
     </a>
 
     <nav class="desktop-nav" aria-label="Navegación principal">
-      ${content.navigation.map(navLink).join('')}
+      ${content.navigation.map(desktopNavItem).join('')}
     </nav>
 
     <button
