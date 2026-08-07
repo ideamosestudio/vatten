@@ -8,6 +8,14 @@ export const content = {
     href: 'https://wa.me/5491171805415',
     label: 'Escribinos por WhatsApp'
   },
+  marquee: [
+    'Sistema de caldera y vapor',
+    'Sistema de enfriamiento',
+    'Ósmosis inversa',
+    'Ablandadores de agua',
+    'Efluentes industriales',
+    '30+ años de experiencia'
+  ],
   navigation: [
     { label: 'Inicio', href: '#inicio' },
     { label: 'Nosotros', href: '#nosotros' },

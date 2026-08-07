@@ -222,6 +222,17 @@ document.querySelector('#app').innerHTML = `
       </div>
     </section>
 
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        ${[...content.marquee, ...content.marquee].map((item) => `
+          <span class="marquee__item">
+            ${item}
+            <svg class="marquee__dot" viewBox="0 0 8 8" aria-hidden="true"><circle cx="4" cy="4" r="4"/></svg>
+          </span>
+        `).join('')}
+      </div>
+    </div>
+
     <section class="about section-shell" id="nosotros">
       <div class="about-redesign">
         <header class="about-redesign__heading">
