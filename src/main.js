@@ -62,9 +62,8 @@ const serviceCard = (service, index) => {
       ${photos.map((photo, photoIndex) => `
         <img
           class="${rotates ? `service-card__photo ${photoIndex === 0 ? 'is-active' : ''}` : ''}"
-          src="${assetBase}${photo.image}"
+          data-src="${assetBase}${photo.image}"
           alt="${photo.alt}"
-          loading="lazy"
           data-parallax
           style="object-position: ${service.position}">
       `).join('')}
@@ -281,9 +280,9 @@ document.querySelector('#app').innerHTML = `
                   data-about-slide
                   aria-hidden="${index !== 0}">
                   <img
-                    src="${assetBase}${image.image}"
+                    ${index === 0 ? `src="${assetBase}${image.image}"` : `data-src="${assetBase}${image.image}"`}
                     alt="${image.alt}"
-                    loading="${index === 0 ? 'eager' : 'lazy'}">
+                    ${index === 0 ? 'loading="eager"' : ''}>
                 </figure>
               `).join('')}
               <div class="about-gallery__index" aria-hidden="true">
@@ -587,6 +586,22 @@ const revealObserver = new IntersectionObserver((entries) => {
 
 document.querySelectorAll('[data-reveal]').forEach((element) => {
   revealObserver.observe(element)
+})
+
+const lazyImageObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (!entry.isIntersecting) return
+    const img = entry.target
+    img.src = img.dataset.src
+    img.removeAttribute('data-src')
+    lazyImageObserver.unobserve(img)
+  })
+}, {
+  rootMargin: '600px 0px'
+})
+
+document.querySelectorAll('img[data-src]').forEach((img) => {
+  lazyImageObserver.observe(img)
 })
 
 const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)')
