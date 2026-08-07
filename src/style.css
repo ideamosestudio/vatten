@@ -1234,11 +1234,11 @@ figure {
   }
 
   .footer-nav-toggle summary {
-    display: none;
+    display: none !important;
   }
 
   .footer-nav-toggle .footer-nav {
-    display: flex;
+    display: flex !important;
     margin-top: 0;
   }
 }

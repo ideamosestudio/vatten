@@ -206,7 +206,7 @@ export const content = {
     description:
       'Complete el formulario con sus datos de contacto y en breve nos estaremos comunicando con usted.',
     fields: ['Nombre', 'Email', 'Teléfono', 'Empresa', 'Mensaje'],
-    submit: 'ENVIAR',
+    submit: 'ENVIAR MENSAJE',
     details: [
       {
         label: 'DIRECCIÓN',
