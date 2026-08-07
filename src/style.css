@@ -3156,6 +3156,27 @@ figure {
   font-weight: 700;
 }
 
+.certifications__panel {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(40px, 5vw, 64px) clamp(24px, 4vw, 56px);
+  border: 1px solid rgba(0, 109, 229, 0.14);
+  border-radius: 32px;
+  background:
+    radial-gradient(circle at 12% 12%, rgba(0, 109, 229, 0.07), transparent 45%),
+    radial-gradient(circle at 88% 90%, rgba(0, 199, 22, 0.06), transparent 42%),
+    var(--blue-100);
+}
+
+.certifications__description {
+  max-width: 560px;
+  margin: 0 auto clamp(32px, 4vw, 46px);
+  color: var(--blue-900);
+  font-size: 1rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
 .certifications__grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -3165,18 +3186,22 @@ figure {
 }
 
 .badge-card {
+  position: relative;
+  z-index: 1;
   display: flex;
   align-items: center;
   gap: 20px;
   padding: 28px 30px;
+  border: 1px solid rgba(0, 109, 229, 0.1);
   border-radius: 22px;
-  background: var(--blue-100);
+  background: var(--white);
+  box-shadow: 0 14px 30px rgba(2, 47, 101, 0.06);
   transition: transform 320ms var(--ease-out), box-shadow 320ms ease;
 }
 
 .badge-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 42px rgba(2, 47, 101, 0.1);
+  box-shadow: 0 20px 42px rgba(2, 47, 101, 0.12);
 }
 
 .badge-card__icon {

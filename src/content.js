@@ -176,7 +176,9 @@ export const content = {
     }
   ],
   certifications: {
-    title: 'Certificaciones',
+    title: 'Insignias',
+    description:
+      'Nuestros procesos están certificados bajo normas internacionales que respaldan la calidad y el cuidado ambiental en cada servicio que brindamos.',
     badges: [
       {
         label: 'Gestión de calidad',

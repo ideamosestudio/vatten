@@ -347,19 +347,22 @@ document.querySelector('#app').innerHTML = `
         <h2 id="certifications-title">${content.certifications.title}</h2>
       </div>
 
-      <div class="certifications__grid">
-        ${content.certifications.badges.map((badge, index) => `
-          <article class="badge-card" data-reveal style="--delay: ${index * 80}ms">
-            <div class="badge-card__icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
-            </div>
-            <div class="badge-card__divider" aria-hidden="true"></div>
-            <div class="badge-card__text">
-              <h3>${badge.label}</h3>
-              <p>${badge.code} · ${badge.standard}</p>
-            </div>
-          </article>
-        `).join('')}
+      <div class="certifications__panel" data-reveal>
+        <p class="certifications__description">${content.certifications.description}</p>
+        <div class="certifications__grid">
+          ${content.certifications.badges.map((badge, index) => `
+            <article class="badge-card" style="--delay: ${index * 80}ms">
+              <div class="badge-card__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
+              </div>
+              <div class="badge-card__divider" aria-hidden="true"></div>
+              <div class="badge-card__text">
+                <h3>${badge.label}</h3>
+                <p>${badge.code} · ${badge.standard}</p>
+              </div>
+            </article>
+          `).join('')}
+        </div>
       </div>
     </section>
 
@@ -491,6 +494,16 @@ mobileMenu.querySelectorAll('a').forEach((link) => {
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') setMenu(false)
 })
+
+const footerNavToggle = document.querySelector('.footer-nav-toggle')
+if (footerNavToggle) {
+  const desktopQuery = window.matchMedia('(min-width: 1061px)')
+  const syncFooterNav = () => {
+    footerNavToggle.open = desktopQuery.matches
+  }
+  syncFooterNav()
+  desktopQuery.addEventListener('change', syncFooterNav)
+}
 
 const header = document.querySelector('[data-header]')
 const backToTop = document.querySelector('[data-back-to-top]')
