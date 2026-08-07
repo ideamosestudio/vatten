@@ -25,7 +25,6 @@ export const content = {
     { label: 'Inicio', href: '#inicio' },
     { label: 'Nosotros', href: '#nosotros' },
     { label: 'Servicios', href: '#servicios' },
-    { label: 'Blog', href: 'https://ideamos.ar/vatten/blog/', external: true },
     { label: 'Contacto', href: '#contacto' }
   ],
   hero: {

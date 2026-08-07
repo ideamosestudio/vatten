@@ -2081,12 +2081,12 @@ figure {
 .site-footer__bottom {
   position: static;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 8px 22px;
   margin-top: 48px;
   padding-top: 18px;
-  text-align: center;
+  text-align: left;
 }
 
 .site-footer__credits {
@@ -2202,6 +2202,8 @@ figure {
 
   .site-footer__bottom {
     position: static;
+    justify-content: center;
+    text-align: center;
     margin-top: 34px;
   }
 }
@@ -2969,12 +2971,12 @@ figure {
 .site-footer__bottom {
   position: static;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   gap: 8px 22px;
   margin-top: 48px;
   padding-top: 18px;
-  text-align: center;
+  text-align: left;
 }
 
 .site-footer__credits {
@@ -3081,6 +3083,8 @@ figure {
 
   .site-footer__bottom {
     position: static;
+    justify-content: center;
+    text-align: center;
     margin-top: 34px;
   }
 }
